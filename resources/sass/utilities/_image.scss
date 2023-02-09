@@ -1,0 +1,9 @@
+.image{
+  height: 10rem;
+  background-image: url('/images/main-image.png');
+  background-size: cover;
+  background-position: center center;
+  @include media-breakpoint-up(md) {
+      height: 100%;
+  }
+}
