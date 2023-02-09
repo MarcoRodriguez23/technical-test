@@ -12589,7 +12589,7 @@ fieldset:disabled .btn {
 
 @media (min-width: 768px) {
   .main-container {
-    min-height: 85vh;
+    min-height: 80vh;
     display: grid;
     grid-template-columns: 50% 50%;
   }
