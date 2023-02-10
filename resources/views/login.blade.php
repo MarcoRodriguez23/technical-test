@@ -5,18 +5,12 @@
 @endsection
 
 @section('main')
- <form action="" method="POST">
-  <div>
-    <label for="rfc">
-      RFC
-    </label>
-    <input 
-      id="rfc" 
-      type="text" 
-      placeholder="RFC"
-      name="rfc"
-    >
+<form class="border p-4 rounded" method="POST">
+  @csrf
+  <div class="mb-3">
+    <label for="rfc" class="form-label">RFC</label>
+    <input type="text" class="form-control rounded-0 py-2" id="rfc" placeholder="Ingrese aqui su RFC">
   </div>
-  <input type="submit" value="Continuar">
- </form>
+  <button type="submit" class="btn btn-primary text-white mx-auto d-block">Submit</button>
+</form>
 @endsection
