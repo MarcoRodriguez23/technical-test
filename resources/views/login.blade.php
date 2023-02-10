@@ -9,7 +9,7 @@
   @csrf
   <div class="mb-3">
     <label for="rfc" class="form-label">RFC</label>
-    <input type="text" class="form-control rounded-0 py-2" id="rfc" placeholder="Ingrese aqui su RFC">
+    <input type="text" class="form-control rounded-0 py-2" id="rfc" placeholder="Ingrese aqui su RFC" name="rfc">
   </div>
   <button type="submit" class="btn btn-primary text-white mx-auto d-block">Submit</button>
 </form>
