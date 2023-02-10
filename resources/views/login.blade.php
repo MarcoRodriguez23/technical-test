@@ -5,7 +5,7 @@
 @endsection
 
 @section('main')
-<form class="border p-4 rounded" method="POST">
+<form class="border p-4 rounded" method="POST" action="{{route('login.store')}}">
   @csrf
   <div class="mb-3">
     <label for="rfc" class="form-label">RFC</label>
