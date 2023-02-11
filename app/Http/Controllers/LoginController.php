@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
+use GuzzleHttp\Exception\ClientException;
 
 class LoginController extends Controller
 {
@@ -19,14 +20,37 @@ class LoginController extends Controller
     ]);
     $response = $client->post('https://sitiowebdesarrollo.centralus.cloudapp.azure.com/api/login',[
       'json' => [
-        'email' => 'rodriguezlmarco23@gmail.com',
-        'password' => 'Marco.2023$'
+        'email' => env('EMAIL_API'),
+        'password' => env('PASSWORD_API')
       ]
     ]);
 
     $token = json_decode($response->getBody()->getContents())->token;
 
-    dd($token);
+    try {
+      $client = new Client([
+        'verify' => false,
+      ]);
+        $response = $client->post('https://sitiowebdesarrollo.centralus.cloudapp.azure.com/api/datosRenovacion', [
+          'headers' => [
+            'Authorization' => 'bearer ' . $token,
+          ],
+          'json' => [
+            // UAMH880216
+            'rfc' => strtoupper($request->rfc)
+          ]
+        ]);
+          
+      $data = json_decode($response->getBody()->getContents());
+  
+      dd($data);
+
+    } catch (ClientException $e) {
+      $response = $e->getResponse();
+      $message = json_decode($response->getBody()->getContents(), true)['message'];
+
+      dd($message);
+    }
 
     return redirect()->route('data.index');
   }
