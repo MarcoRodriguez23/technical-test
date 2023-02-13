@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;
+use App\API;
 use Illuminate\Http\Request;
-use GuzzleHttp\Exception\ClientException;
 
 class LoginController extends Controller
 {
@@ -15,43 +14,17 @@ class LoginController extends Controller
 
   public function store(Request $request)
   {
-    $client = new Client([
-      'verify' => false,
-    ]);
-    $response = $client->post('https://sitiowebdesarrollo.centralus.cloudapp.azure.com/api/login',[
-      'json' => [
-        'email' => env('EMAIL_API'),
-        'password' => env('PASSWORD_API')
-      ]
-    ]);
+    $api = new API();
 
-    $token = json_decode($response->getBody()->getContents())->token;
+    $resultado =  $api->getDatos($request->rfc);
 
-    try {
-      $client = new Client([
-        'verify' => false,
-      ]);
-        $response = $client->post('https://sitiowebdesarrollo.centralus.cloudapp.azure.com/api/datosRenovacion', [
-          'headers' => [
-            'Authorization' => 'bearer ' . $token,
-          ],
-          'json' => [
-            // UAMH880216
-            'rfc' => strtoupper($request->rfc)
-          ]
-        ]);
-          
-      $data = json_decode($response->getBody()->getContents());
-  
-      dd($data);
-
-    } catch (ClientException $e) {
-      $response = $e->getResponse();
-      $message = json_decode($response->getBody()->getContents(), true)['message'];
-
-      dd($message);
+    if(is_string($resultado))
+    {
+      return back()->with('mensaje',$resultado);
+    }
+    else{
+      return redirect()->route('data.index',['data' => $resultado]);
     }
 
-    return redirect()->route('data.index');
   }
 }
