@@ -40,7 +40,7 @@ class API
         ]
       ]);
         
-      $data = json_decode($response->getBody()->getContents());
+      $data = json_decode($response->getBody()->getContents())->datos;
       
       return $data;
 

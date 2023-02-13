@@ -15,7 +15,6 @@ class LoginController extends Controller
   public function store(Request $request)
   {
     $api = new API();
-
     $resultado =  $api->getDatos($request->rfc);
 
     if(is_string($resultado))
@@ -23,8 +22,8 @@ class LoginController extends Controller
       return back()->with('mensaje',$resultado);
     }
     else{
+      
       return redirect()->route('data.index',['data' => $resultado]);
     }
-
   }
 }

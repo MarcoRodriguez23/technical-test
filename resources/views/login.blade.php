@@ -15,6 +15,7 @@
       id="rfc" 
       placeholder="Ingrese aqui su RFC" 
       name="rfc"
+      value="{{old('rfc')}}"
     >
   </div>
   @if(session('mensaje'))
