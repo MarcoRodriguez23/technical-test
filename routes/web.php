@@ -13,5 +13,6 @@ Route::post('/datos',[DataController::class,'store'])->name('data.store');
 
 Route::get('/oferta',[OfertaController::class,'index'])->name('oferta.index');
 Route::post('/oferta',[OfertaController::class,'store'])->name('oferta.store');
+Route::put('/oferta',[OfertaController::class,'update'])->name('oferta.update');
 
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');

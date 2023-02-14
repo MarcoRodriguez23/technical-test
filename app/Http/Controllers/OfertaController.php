@@ -49,4 +49,18 @@ class OfertaController extends Controller
     
     return redirect()->route('oferta.index',['oferta'=>$oferta]);
   }
+
+  public function update(Request $request)
+  {
+    $cliente = DatosCliente::where('cliente_id',session('cliente_id'))->first();
+
+    $cliente->status = $request->decision;
+    $cliente->oferta->decision = $request->decision;
+
+    $cliente->save();
+    $cliente->oferta->save();
+
+    return redirect()->back();
+
+  }
 }

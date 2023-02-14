@@ -69,7 +69,7 @@
 
 <form method="POST" action="{{route('oferta.store')}}">
   @csrf
-  <button type="submit" class="btn btn-primary text-white">
+  <button type="submit" class="btn btn-primary text-white mt-4 mx-auto d-block">
     Recibir oferta
   </button>
 </form>
