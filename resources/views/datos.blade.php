@@ -63,7 +63,7 @@
 <div>
 
   <h3 class="text-center">Domicilio</h3>
-  @include('form',compact($domicilio))
+  @include('form',['domicilio'=>$cliente->domicilio])
 
 </div>
 <button class="btn btn-primary text-white">Recibir oferta</button>

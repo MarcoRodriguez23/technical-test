@@ -59,9 +59,8 @@ class LoginController extends Controller
       session(['cliente_id'=> $data_cliente->cliente_id]);
 
       $cliente = DatosCliente::where('cliente_id',session('cliente_id'))->first();
-      $domicilio = DatosDomicilio::where('cliente_id',session('cliente_id'))->first();
 
-      return redirect()->route('data.index',['cliente'=>$cliente, 'domicilio'=>$domicilio]);
+      return redirect()->route('data.index',['cliente'=>$cliente]);
     }
   }
 }

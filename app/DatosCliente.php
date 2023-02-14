@@ -20,4 +20,9 @@ class DatosCliente extends Model
     'genero',
     'ultimo_grado_estudios'
   ];
+
+  public function domicilio()
+  {
+      return $this->hasOne(DatosDomicilio::class,'cliente_id','cliente_id');
+  }
 }

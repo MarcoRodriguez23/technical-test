@@ -14,9 +14,8 @@ class DataController extends Controller
     if(session('cliente_id'))
     {
       $cliente = DatosCliente::where('cliente_id',session('cliente_id'))->first();
-      $domicilio = DatosDomicilio::where('cliente_id',session('cliente_id'))->first();
       
-      return view('datos',['cliente'=> $cliente, 'domicilio'=>$domicilio]);
+      return view('datos',['cliente'=> $cliente]);
     }
     else
     {
