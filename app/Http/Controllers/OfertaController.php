@@ -14,7 +14,8 @@ class OfertaController extends Controller
     
     if(session('cliente_id'))
     {
-      return view('oferta');
+      $oferta = DatosOferta::where('cliente_id',session('cliente_id'))->first();
+      return view('oferta',['oferta'=>$oferta]);
     }
     else
     {
@@ -39,11 +40,13 @@ class OfertaController extends Controller
         'pago_mensual'=> $data_prestamo->pago_mensual,
         'tasa_interes' => $data_prestamo->tasa_interes,
       ]);
+      
+      $cliente->status = 'registrado';
+      $cliente->save();
     }
 
-    $cliente->status = 'registrado';
-    $cliente->save();
+    $oferta = DatosOferta::where('cliente_id',session('cliente_id'))->first();
     
-    return redirect()->route('oferta.index');
+    return redirect()->route('oferta.index',['oferta'=>$oferta]);
   }
 }
