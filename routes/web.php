@@ -9,6 +9,7 @@ Route::get('/',[LoginController::class,'index'])->name('login.index');
 Route::post('/',[LoginController::class,'store'])->name('login.store');
 
 Route::get('/datos',[DataController::class,'index'])->name('data.index');
+Route::post('/datos',[DataController::class,'store'])->name('data.store');
 
 Route::get('/oferta',[OfertaController::class,'index'])->name('oferta.index');
 

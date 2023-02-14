@@ -24,4 +24,9 @@ class DataController extends Controller
     }
 
   }
+
+  public function store()
+  {
+    dd('actualizare el domicilio');
+  }
 }

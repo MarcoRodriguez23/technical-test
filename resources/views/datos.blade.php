@@ -61,37 +61,10 @@
 </div>
 
 <div>
+
   <h3 class="text-center">Domicilio</h3>
-  <p class="fw-bold p-2 border rounded">
-    CP:
-    <span class="fw-normal">{{$domicilio->cp}}</span>
-  </p>
-  <p class="fw-bold p-2 border rounded">
-    Calle:
-    <span class="fw-normal">{{$domicilio->calle}}</span>
-  </p>
-  <p class="fw-bold p-2 border rounded">
-    Num. exterior:
-    <span class="fw-normal">{{$domicilio->no_exterior}}</span>
-  </p>
-  <p class="fw-bold p-2 border rounded">
-    Num. interior:
-    <span class="fw-normal">{{$domicilio->no_interior}}</span>
-  </p>
-  <p class="fw-bold p-2 border rounded">
-    Colonia:
-    <span class="fw-normal">{{$domicilio->colonia}}</span>
-  </p>
-  <p class="fw-bold p-2 border rounded">
-    Municipio:
-    <span class="fw-normal">{{$domicilio->municipio}}</span>
-  </p>
-  <p class="fw-bold p-2 border rounded">
-    Estado:
-    <span class="fw-normal">{{$domicilio->estado}}</span>
-  </p>
+  @include('form',compact($domicilio))
 
 </div>
-<button class="btn btn-primary text-white">Actualizar domicilio</button>
 <button class="btn btn-primary text-white">Recibir oferta</button>
 @endsection
