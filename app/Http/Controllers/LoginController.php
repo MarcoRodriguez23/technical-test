@@ -27,7 +27,6 @@ class LoginController extends Controller
     else{
       $data_cliente = $resultado->datos_personales;
       $data_domicilio = $resultado->datos_domicilio;
-      $data_prestamo = $resultado->datos_credito;
 
       if(! DatosCliente::where('rfc',$data_cliente->rfc)->first())
       {
@@ -57,13 +56,6 @@ class LoginController extends Controller
           'cp' => $data_domicilio->cp
         ]);
 
-        DatosOferta::create([
-          'cliente_id' => $data_cliente->cliente_id,
-          'monto'=> $data_prestamo->monto,
-          'plazo'=> $data_prestamo->plazo,
-          'pago_mensual'=> $data_prestamo->pago_mensual,
-          'tasa_interes' => $data_prestamo->tasa_interes,
-        ]);
       }
 
       session(['cliente_id'=> $data_cliente->cliente_id]);

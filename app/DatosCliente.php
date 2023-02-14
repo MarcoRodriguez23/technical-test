@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DatosCliente extends Model
 {
+  protected $primaryKey = 'cliente_id';
+  
   protected $fillable = [
     'cliente_id',
     'nombre',
@@ -23,6 +25,11 @@ class DatosCliente extends Model
 
   public function domicilio()
   {
-      return $this->hasOne(DatosDomicilio::class,'cliente_id','cliente_id');
+    return $this->hasOne(DatosDomicilio::class,'cliente_id','cliente_id');
+  }
+
+  public function oferta()
+  {
+    return $this->hasOne(DatosOferta::class,'cliente_id','cliente_id');
   }
 }

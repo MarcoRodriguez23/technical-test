@@ -12,5 +12,6 @@ Route::get('/datos',[DataController::class,'index'])->name('data.index');
 Route::post('/datos',[DataController::class,'store'])->name('data.store');
 
 Route::get('/oferta',[OfertaController::class,'index'])->name('oferta.index');
+Route::post('/oferta',[OfertaController::class,'store'])->name('oferta.store');
 
 Route::post('/logout',[LogoutController::class,'store'])->name('logout');

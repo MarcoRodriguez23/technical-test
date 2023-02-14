@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DatosDomicilio extends Model
 {
+  protected $primaryKey = 'cliente_id';
+  
   protected $fillable = [
     'cliente_id',
     'calle',

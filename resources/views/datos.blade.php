@@ -66,5 +66,11 @@
   @include('form',['domicilio'=>$cliente->domicilio])
 
 </div>
-<button class="btn btn-primary text-white">Recibir oferta</button>
+
+<form method="POST" action="{{route('oferta.store')}}">
+  @csrf
+  <button type="submit" class="btn btn-primary text-white">
+    Recibir oferta
+  </button>
+</form>
 @endsection

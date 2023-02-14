@@ -8,7 +8,7 @@ class LogoutController extends Controller
 {
   public function store()
   {
-    session()->forget('rfc');
+    session()->forget('cliente_id');
     return redirect()->route('login.index');
   }
 }
