@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\API;
 use App\DatosCliente;
+use App\User;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
