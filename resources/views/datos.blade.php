@@ -1,34 +1,67 @@
 @extends('layout.app')
 
 @section('title')
-    datos
+  datos
 @endsection
 
 @section('main')
 <div>
-  <h3>Datos personales</h3>
-  <div class="row">
-    <div class="col-6">
-      <p>Nombre: {{$cliente->nombre}}</p>
-      <p>Apellido materno: {{$cliente->apellido_materno}}</p>
-      <p>fecha de nacimiento: {{$cliente->fecha_nacimiento}}</p>
-      <p>ingresos: ${{$cliente->ingresos}}</p>
-      <p>estado civil: {{$cliente->estado_civil}}</p>
-      <p>ultimo grado de estudios: {{$cliente->ultimo_grado_estudios}}</p>
-      
-    </div>
-    <div class="col-6">
-      <p>Apellido paterno: {{$cliente->apellido_paterno}}</p>
-      <p>RFC: {{$cliente->rfc}}</p>
-      <p>Num-dependientes: {{$cliente->no_dependientes}}</p>
-      <p>egresos: ${{$cliente->egresos}}</p>
-      <p>genero: {{$cliente->genero}}</p>
+  <div class="row text-center">
+    <div class="col-md-6">
+      <p class="fw-bold p-2 border rounded">
+        Nombre: 
+        <span class="fw-normal">{{$cliente->nombre}}</span> 
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Apellido paterno: 
+        <span class="fw-normal">{{$cliente->apellido_paterno}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Apellido materno: 
+        <span class="fw-normal">{{$cliente->apellido_materno}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        RFC: 
+        <span class="fw-normal">{{$cliente->rfc}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Fecha de nacimiento: 
+        <span class="fw-normal">{{$cliente->fecha_nacimiento}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Genero: 
+        <span class="fw-normal">{{$cliente->genero}}</span>
+      </p>
 
+    </div>
+
+    <div class="col-md-6">
+      <p class="fw-bold p-2 border rounded">
+        Ingresos: 
+        <span class="fw-normal">${{$cliente->ingresos}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Egresos: 
+        <span class="fw-normal">${{$cliente->egresos}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Num-dependientes: 
+        <span class="fw-normal">{{$cliente->no_dependientes}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Estado civil:
+        <span class="fw-normal">{{$cliente->estado_civil}}</span>
+      </p>
+      <p class="fw-bold p-2 border rounded">
+        Grado de estudios: 
+        <span class="fw-normal">{{$cliente->ultimo_grado_estudios}}</span>
+      </p>
     </div>
   </div>
 </div>
+
 <div>
-  <h3>Domicilio</h3>
+  <h3 class="text-center">Domicilio</h3>
   <p>calle: calle</p>
   <p>num exterior: #</p>
   <p>num interior: #</p>
