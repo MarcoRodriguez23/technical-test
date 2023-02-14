@@ -23,37 +23,31 @@ class LoginController extends Controller
       return back()->with('mensaje',$resultado);
     }
     else{
-      // $this->validate($resultado->datos_personales,[
-      //   'cliente_id' => 'required|integer',
-      //   'nombre'=> 'required|string',
-      //   'apellido_paterno' => 'requred|string',
-      //   'apellido_materno' => 'requred|string',
-      //   'rfc' => 'required|max:10',
-      //   'fecha_nacimiento' => 'required|date',
-      //   'ingresos' => 'required|integer',
-      //   'egresos' => 'required|integer',
-      //   'no_dependientes' => 'required|integer',
-      //   'estado_civil' => 'required|string',
-      //   'genero' => 'required|string',
-      //   'ultimo_grado_estudios' => 'required|integer'
-      // ]); 
+      $data_cliente = $resultado->datos_personales;
 
-      DatosCliente::create([
-        'cliente_id' => $resultado->datos_personales->cliente_id,
-        'nombre'=> $resultado->datos_personales->nombre,
-        'apellido_paterno' => $resultado->datos_personales->apellido_paterno,
-        'apellido_materno' => $resultado->datos_personales->apellido_materno,
-        'rfc' => $resultado->datos_personales->rfc,
-        'fecha_nacimiento' => $resultado->datos_personales->fecha_nacimiento,
-        'ingresos' => $resultado->datos_personales->ingresos,
-        'egresos' => $resultado->datos_personales->egresos,
-        'no_dependientes' => $resultado->datos_personales->no_dependientes,
-        'estado_civil' => $resultado->datos_personales->estado_civil,
-        'genero' => $resultado->datos_personales->genero,
-        'ultimo_grado_estudios' => $resultado->datos_personales->ultimo_grado_estudios
-      ]);
+      if(! DatosCliente::where('rfc',$data_cliente->rfc)->first())
+      {
+        DatosCliente::create([
+          'cliente_id' => $data_cliente->cliente_id,
+          'nombre'=> $data_cliente->nombre,
+          'apellido_paterno' => $data_cliente->apellido_paterno,
+          'apellido_materno' => $data_cliente->apellido_materno,
+          'rfc' => $data_cliente->rfc,
+          'fecha_nacimiento' => $data_cliente->fecha_nacimiento,
+          'ingresos' => $data_cliente->ingresos,
+          'egresos' => $data_cliente->egresos,
+          'no_dependientes' => $data_cliente->no_dependientes,
+          'estado_civil' => $data_cliente->estado_civil,
+          'genero' => $data_cliente->genero,
+          'ultimo_grado_estudios' => $data_cliente->ultimo_grado_estudios
+        ]);
+      }
 
-      return redirect()->route('data.index',['data' => $resultado]);
+      session(['rfc'=> $data_cliente->rfc]);
+
+      $cliente = DatosCliente::where('rfc',session('rfc'))->first();
+
+      return redirect()->route('data.index',['cliente'=>$cliente]);
     }
   }
 }
