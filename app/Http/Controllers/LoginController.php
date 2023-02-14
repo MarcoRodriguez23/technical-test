@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\API;
 use App\DatosCliente;
 use App\DatosDomicilio;
+use App\DatosOferta;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -26,6 +27,7 @@ class LoginController extends Controller
     else{
       $data_cliente = $resultado->datos_personales;
       $data_domicilio = $resultado->datos_domicilio;
+      $data_prestamo = $resultado->datos_credito;
 
       if(! DatosCliente::where('rfc',$data_cliente->rfc)->first())
       {
@@ -53,6 +55,14 @@ class LoginController extends Controller
           'municipio' => $data_domicilio->municipio,
           'estado' => $data_domicilio->estado,
           'cp' => $data_domicilio->cp
+        ]);
+
+        DatosOferta::create([
+          'cliente_id' => $data_cliente->cliente_id,
+          'monto'=> $data_prestamo->monto,
+          'plazo'=> $data_prestamo->plazo,
+          'pago_mensual'=> $data_prestamo->pago_mensual,
+          'tasa_interes' => $data_prestamo->tasa_interes,
         ]);
       }
 
