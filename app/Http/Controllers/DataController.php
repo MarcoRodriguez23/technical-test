@@ -25,8 +25,8 @@ class DataController extends Controller
 
   }
 
-  public function store()
+  public function store(Request $request)
   {
-    dd('actualizare el domicilio');
+    dd($request->cp);
   }
 }
