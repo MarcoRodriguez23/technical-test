@@ -22,7 +22,7 @@
         </a>
   
         <ul class="nav nav-pills">
-          @if (session('rfc'))
+          @if (session('cliente_id'))
             <form method="POST" action="{{route('logout')}}" class="nav-item">
               @csrf
               <button type="submit" class="nav-link active">

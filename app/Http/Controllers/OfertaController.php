@@ -10,7 +10,7 @@ class OfertaController extends Controller
   public function index()
   {
     
-    if(session('rfc'))
+    if(session('cliente_id'))
     {
       return view('oferta');
     }

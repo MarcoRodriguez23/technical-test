@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\API;
 use App\DatosCliente;
+use App\DatosDomicilio;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -24,6 +25,7 @@ class LoginController extends Controller
     }
     else{
       $data_cliente = $resultado->datos_personales;
+      $data_domicilio = $resultado->datos_domicilio;
 
       if(! DatosCliente::where('rfc',$data_cliente->rfc)->first())
       {
@@ -41,13 +43,25 @@ class LoginController extends Controller
           'genero' => $data_cliente->genero,
           'ultimo_grado_estudios' => $data_cliente->ultimo_grado_estudios
         ]);
+
+        DatosDomicilio::create([
+          'cliente_id' => $data_cliente->cliente_id,
+          'calle' => $data_domicilio->calle,
+          'no_exterior' => $data_domicilio->no_exterior,
+          'no_interior' => $data_domicilio->no_interior,
+          'colonia' => $data_domicilio->colonia,
+          'municipio' => $data_domicilio->municipio,
+          'estado' => $data_domicilio->estado,
+          'cp' => $data_domicilio->cp
+        ]);
       }
 
-      session(['rfc'=> $data_cliente->rfc]);
+      session(['cliente_id'=> $data_cliente->cliente_id]);
 
-      $cliente = DatosCliente::where('rfc',session('rfc'))->first();
+      $cliente = DatosCliente::where('cliente_id',session('cliente_id'))->first();
+      $domicilio = DatosDomicilio::where('cliente_id',session('cliente_id'))->first();
 
-      return redirect()->route('data.index',['cliente'=>$cliente]);
+      return redirect()->route('data.index',['cliente'=>$cliente, 'domicilio'=>$domicilio]);
     }
   }
 }
