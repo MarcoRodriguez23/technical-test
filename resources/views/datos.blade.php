@@ -7,17 +7,25 @@
 @section('main')
 <div>
   <h3>Datos personales</h3>
-  <p>Nombre: nombre</p>
-  <p>Apellido paterno: apellido</p>
-  <p>Apellido materno: apellido</p>
-  <p>RFC: rfc</p>
-  <p>fecha de nacimiento: dd/mm/aaaa</p>
-  <p>ingresos: $$$$</p>
-  <p>egresos: $$$$</p>
-  <p>Num-dependientes: #</p>
-  <p>estado civil: estado</p>
-  <p>genero: genero</p>
-  <p>ultimo grado de estudios: escolaridad</p>
+  <div class="row">
+    <div class="col-6">
+      <p>Nombre: {{$cliente->nombre}}</p>
+      <p>Apellido materno: {{$cliente->apellido_materno}}</p>
+      <p>fecha de nacimiento: {{$cliente->fecha_nacimiento}}</p>
+      <p>ingresos: ${{$cliente->ingresos}}</p>
+      <p>estado civil: {{$cliente->estado_civil}}</p>
+      <p>ultimo grado de estudios: {{$cliente->ultimo_grado_estudios}}</p>
+      
+    </div>
+    <div class="col-6">
+      <p>Apellido paterno: {{$cliente->apellido_paterno}}</p>
+      <p>RFC: {{$cliente->rfc}}</p>
+      <p>Num-dependientes: {{$cliente->no_dependientes}}</p>
+      <p>egresos: ${{$cliente->egresos}}</p>
+      <p>genero: {{$cliente->genero}}</p>
+
+    </div>
+  </div>
 </div>
 <div>
   <h3>Domicilio</h3>

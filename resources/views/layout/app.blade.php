@@ -25,8 +25,14 @@
           <li class="nav-item"><a href="#" class="nav-link active">Login</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
           <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">About</a></li>
+          @if (session('rfc'))
+            <form method="POST" action="{{route('logout')}}" class="nav-item">
+              @csrf
+              <button type="submit" class="nav-link">
+                  Cerrar Sesión
+              </button>
+            </form>
+          @endif
         </ul>
       </header>
     </div>

@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\LogoutController;
+use App\Http\Controllers\OfertaController;
 
 Route::get('/',[LoginController::class,'index'])->name('login.index');
 Route::post('/',[LoginController::class,'store'])->name('login.store');
 
 Route::get('/datos',[DataController::class,'index'])->name('data.index');
 
-Route::get('/oferta', function () {
-  return view('oferta');
-});
+Route::get('/oferta',[OfertaController::class,'index'])->name('oferta.index');
+
+Route::post('/logout',[LogoutController::class,'store'])->name('logout');
