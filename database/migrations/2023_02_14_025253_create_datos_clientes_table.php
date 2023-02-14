@@ -14,6 +14,7 @@ class CreateDatosClientesTable extends Migration
     public function up()
     {
         Schema::create('datos_clientes', function (Blueprint $table) {
+            $table->index('cliente_id');
             $table->integer('cliente_id');
             $table->string('nombre');
             $table->string('apellido_paterno');
