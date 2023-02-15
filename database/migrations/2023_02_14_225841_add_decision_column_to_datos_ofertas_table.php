@@ -14,7 +14,7 @@ class AddDecisionColumnToDatosOfertasTable extends Migration
     public function up()
     {
         Schema::table('datos_ofertas', function (Blueprint $table) {
-          $table->string('decision');
+          $table->string('decision')->default('');
         });
     }
 

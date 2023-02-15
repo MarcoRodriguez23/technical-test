@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\API;
-use App\DatosCliente;
 use App\DatosOferta;
+use App\DatosCliente;
+use App\Mail\AdminMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OfertaController extends Controller
 {
@@ -59,6 +61,11 @@ class OfertaController extends Controller
 
     $cliente->save();
     $cliente->oferta->save();
+
+    if ($cliente->oferta->decision=='aceptada') {
+      $correo = new AdminMail($cliente);
+      Mail::to('marco_ben2010@hotmail.com')->send($correo);
+    }
 
     return redirect()->back();
 
