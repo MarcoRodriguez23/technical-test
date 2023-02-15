@@ -14,5 +14,7 @@ class DatosOferta extends Model
     'plazo',
     'pago_mensual',
     'tasa_interes',
+    'decision',
+    'decision_final'
   ];
 }
