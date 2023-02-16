@@ -17,4 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('datos-cliente','APIController');
+Route::get('/datos-cliente/{rfc}','APIController@show');
+Route::get('/datos-cliente/{start_date}/{end_date}','APIController@dates');
