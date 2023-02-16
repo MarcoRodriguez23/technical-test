@@ -9,7 +9,11 @@
       id="cp" 
       placeholder="Ingrese aqui su cp" 
       name="cp"
-      value="{{$domicilio->cp ? $domicilio->cp : old('rfc')}}"
+      value="{{$domicilio->cp ? $domicilio->cp : old('cp')}}"
+      maxlength="5"
+      oninput=
+      "this.value = this.value.replace(/[^0-9]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
 
@@ -22,6 +26,10 @@
       placeholder="Ingrese aqui su calle" 
       name="calle"
       value="{{$domicilio->calle ? $domicilio->calle : old('calle')}}"
+      maxlength="30"
+      oninput=
+      "this.value = this.value.replace(/[^a-zA-Z 0-9 áéíóú ÁÉÍÓÚ]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
 
@@ -34,6 +42,10 @@
       placeholder="Ingrese aqui su no_exterior" 
       name="no_exterior"
       value="{{$domicilio->no_exterior ? $domicilio->no_exterior : old('no_exterior')}}"
+      maxlength="3"
+      oninput=
+      "this.value = this.value.replace(/[^0-9]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
 
@@ -46,6 +58,10 @@
       placeholder="Ingrese aqui su no_interior" 
       name="no_interior"
       value="{{$domicilio->no_interior ? $domicilio->no_interior : old('no_interior')}}"
+      maxlength="3"
+      oninput=
+      "this.value = this.value.replace(/[^0-9]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
 
@@ -58,6 +74,10 @@
       placeholder="Ingrese aqui su colonia" 
       name="colonia"
       value="{{$domicilio->colonia ? $domicilio->colonia : old('colonia')}}"
+      maxlength="35"
+      oninput=
+      "this.value = this.value.replace(/[^a-zA-Z áéíóú ÁÉÍÓÚ]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
   <div class="mb-3">
@@ -69,6 +89,10 @@
       placeholder="Ingrese aqui su municipio" 
       name="municipio"
       value="{{$domicilio->municipio ? $domicilio->municipio : old('municipio')}}"
+      maxlength="25"
+      oninput=
+      "this.value = this.value.replace(/[^a-zA-Z áéíóú ÁÉÍÓÚ]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
   <div class="mb-3">
@@ -80,6 +104,10 @@
       placeholder="Ingrese aqui su estado" 
       name="estado"
       value="{{$domicilio->estado ? $domicilio->estado : old('estado')}}"
+      maxlength="30"
+      oninput=
+      "this.value = this.value.replace(/[^a-zA-Z áéíóú ÁÉÍÓÚ]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
 

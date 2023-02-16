@@ -16,6 +16,10 @@
       placeholder="Ingrese aqui su RFC" 
       name="rfc"
       value="{{old('rfc')}}"
+      maxlength="15"
+      oninput=
+      "this.value = this.value.replace(/[^a-zA-Z 0-9]/,'')
+      if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength)"
     >
   </div>
   @if(session('mensaje'))

@@ -35,6 +35,9 @@ class OfertaController extends Controller
     $data_prestamo = $resultado->datos_credito;
 
     if(! DatosOferta::where('cliente_id',session('cliente_id'))->first()){
+
+      // $this->validate($data_prestamo,DatosOferta::validationRules());
+
       DatosOferta::create([
         'cliente_id' => session('cliente_id'),
         'monto'=> $data_prestamo->monto,

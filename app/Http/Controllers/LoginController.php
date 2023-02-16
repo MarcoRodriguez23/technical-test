@@ -30,6 +30,9 @@ class LoginController extends Controller
 
       if(! DatosCliente::where('rfc',$data_cliente->rfc)->first())
       {
+
+        // $this->validate($data_cliente,DatosCliente::validationRules());
+
         DatosCliente::create([
           'cliente_id' => $data_cliente->cliente_id,
           'nombre'=> $data_cliente->nombre,
@@ -44,6 +47,8 @@ class LoginController extends Controller
           'genero' => $data_cliente->genero,
           'ultimo_grado_estudios' => $data_cliente->ultimo_grado_estudios
         ]);
+
+        // $this->validate($data_domicilio,DatosDomicilio::validationRules());
 
         DatosDomicilio::create([
           'cliente_id' => $data_cliente->cliente_id,

@@ -17,4 +17,17 @@ class DatosOferta extends Model
     'decision',
     'decision_final'
   ];
+
+  public static function validationRules()
+  {
+    return [
+      'cliente_id' => 'required|unique:datos_clientes',
+      'monto' => 'required|integer',
+      'plazo' => 'required|string',
+      'pago_mensual' => 'required',
+      'tasa_interes' => 'required|string',
+      'decision' => 'required|string',
+      'decision_final' => 'required|string'
+    ];
+  }
 }
