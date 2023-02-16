@@ -1,12 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>UThis Credit - Nueva oferta aceptada</title>
-</head>
-<body>
-  <h1>El día de hoy recibiste una nueva oferta</h1>
-  <main>
-    <h3>Datos del solicitante</h3>
+@extends('layout.app')
+
+@section('title')
+  Oferta {{$cliente->oferta->decision_final}}
+@endsection
+
+@section('main')
+  <div>
+    <h3 class="text-center">Datos del solicitante</h3>
     <p class="fw-bold p-2 border rounded">
       Nombre: 
       <span class="fw-normal">{{$cliente->nombre}}</span> 
@@ -32,7 +32,7 @@
       <span class="fw-normal">${{$cliente->egresos}}</span>
     </p>
 
-    <h3>Datos del prestamo</h3>
+    <h3 class="text-center">Datos del prestamo</h3>
     <p class="fw-bold p-2 border rounded">
       Monto: 
       <span class="fw-normal">${{$cliente->oferta->monto}}</span>
@@ -49,12 +49,7 @@
       Tasa de interes: 
       <span class="fw-normal">{{$cliente->oferta->tasa_interes}}</span>
     </p>
-  </main>
 
-    <p>Haga clic en los siguientes enlaces para aceptar o rechazar:</p>
 
-    <a href="{{route('admin.aceptar',['cliente'=>$cliente])}}">Aceptar</a>
-    <a href="{{route('admin.rechazar',['cliente'=>$cliente])}}">Rechazar</a>
-
-</body>
-</html>
+  </div>
+@endsection

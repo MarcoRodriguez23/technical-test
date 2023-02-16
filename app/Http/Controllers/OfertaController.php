@@ -64,7 +64,7 @@ class OfertaController extends Controller
 
     if ($cliente->oferta->decision=='aceptada') {
       $correo = new AdminMail($cliente);
-      Mail::to('marco_ben2010@hotmail.com')->send($correo);
+      Mail::to(env('EMAIL_DESTINO'))->send($correo);
     }
 
     return redirect()->back();

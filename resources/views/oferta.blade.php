@@ -25,7 +25,7 @@
 </div>
 <div class="d-flex justify-content-evenly">
   @if ($oferta->decision == '')
-    <form method="POST" action="{{route('oferta.store')}}">
+    <form method="POST" action="{{route('oferta.update')}}">
       @csrf
       @method('PUT')
       <input type="hidden" value="aceptada" name="decision">
@@ -34,7 +34,7 @@
       </button>
     </form>
     
-    <form method="POST" action="{{route('oferta.store')}}">
+    <form method="POST" action="{{route('oferta.update')}}">
       @csrf
       @method('PUT')
       <input type="hidden" value="rechazada" name="decision">
